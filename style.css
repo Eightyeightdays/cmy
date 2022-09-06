@@ -1,0 +1,74 @@
+:root{
+    font-family: verdana;
+  }
+  
+  #container{
+    height: 100vh;
+  }
+  
+  #outer{
+    background: gainsboro;
+    width: 90vw;
+    margin: auto;
+    padding: 0.5em;
+    border-radius: 1em;
+    height: max-content;
+  }
+  
+  #inputbox{
+    margin-top: 1em;
+    background: white;
+    padding: ;
+    border-radius: 1em;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  #title, #instructions, p{
+    text-align: center;
+  }
+  input[type="number"]{
+    text-align: center;
+    margin-left: 0.5em;
+    width: 1.5em;
+    font-size: 2em;
+    background: white;
+    -moz-appearance: textfield;
+  }
+  
+  #heightinput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5em;
+    border-radius: 1em;
+  }
+  
+  #buttonBox{
+    padding-top: 0.5em;
+    margin: auto;
+    display: flex;
+    height: max-content;
+  }
+  
+  button{
+    cursor: pointer;
+    padding: 0.3em;
+    width: auto;
+    margin: auto;
+    border-radius: 1em;
+  }
+  
+  #result{
+    position: relative;
+    top: 2em;
+    Left: 0;
+    padding: 0.5em;
+    margin: auto;
+    display: none;
+    grid-gap: 0.1em;
+    width: min-content;
+    align-items: center;
+    border-radius: 1em;
+    
+  }
