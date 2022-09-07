@@ -22,9 +22,9 @@ function generateRandomGrid(){
   
   // calculate largest possible grid width given the available space
   if(shortestDimension > longestDimension / 2){
-    maxGridWidth = longestDimension / 2;
+    maxGridWidth = (longestDimension / 2) - 2;
   }else{
-    maxGridWidth = shortestDimension;
+    maxGridWidth = shortestDimension - 2;
   }
   
   pixelHeightAndWidth = maxGridWidth / gridHeight;

@@ -15,13 +15,7 @@ html, body {
 /* *************** */
 #container{
   height: 100%;
-  /* background: purple; */
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  display: grid;
-  place-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
 }
 
 #container-inner{
@@ -29,6 +23,11 @@ html, body {
   padding: 1.5em;
   height: 100%;
   width: 100%;
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-grid{
@@ -41,7 +40,7 @@ html, body {
 
 #grid{
   display: grid;
-  border: 1px solid black;
+  outline: 1px solid black;
 }
 
 /* ************** */
@@ -68,6 +67,7 @@ html, body {
   padding: 1.5em;
   border-radius: 1em;
   font-size: 10px;
+  width: max-content
 }
 
 input[type="number"]{
@@ -101,11 +101,10 @@ input[type="number"]{
 
 @media(orientation: portrait){
   #container{
-    grid-template-columns: 1fr;
-    /* grid-template-rows: repeat(2, 1fr); */
+    flex-direction: column;
   }
   #container-inner{
-    height: 100%;
+    /* height: 100%; */
   }
   .container-grid{
     /* height: 100%; */
