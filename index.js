@@ -1,22 +1,34 @@
 function generateRandomGrid(){
-
+  
+  var button=document.getElementById("button");
+  var grid = document.getElementById("grid");
   var gridHeight = document.getElementById("height").value;             // Specify grid rows for CSS
   var totalSquares = gridHeight * gridHeight;                 // Total number of squares in the grid
   var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
   var viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-  var smallestDimension;
+  var longestDimension;
+  var shortestDimension;
+  var maxGridWidth;
   var pixelHeightAndWidth;
-  var button=document.getElementById("button");
-  var grid = document.getElementById("grid");
   var colourArray = [];
 
-  if(viewportWidth < viewportHeight){
-    smallestDimension = viewportWidth;
+  if(viewportWidth < viewportHeight){   // portrait orientation
+    shortestDimension = viewportWidth;
+    longestDimension = viewportHeight;
   }else{
-    smallestDimension = viewportHeight; 
+    shortestDimension = viewportHeight; // landscape orientation
+    longestDimension = viewportWidth;
   }
-
-  pixelHeightAndWidth = (smallestDimension *0.9) / gridHeight;
+  
+  // calculate largest possible grid width given the available space
+  if(shortestDimension > longestDimension / 2){
+    maxGridWidth = longestDimension / 2;
+  }else{
+    maxGridWidth = shortestDimension;
+  }
+  
+  pixelHeightAndWidth = maxGridWidth / gridHeight;
+  
 
   if (gridHeight > 100 || gridHeight < 1){
       alert("Input must be no greater than 100");
@@ -46,15 +58,16 @@ function generateRandomGrid(){
      } 
     
   // Dynamically set grid dimensions based on user input
-   grid.style.gridTemplateColumns = "repeat(" +gridHeight + ", 1fr)";
-   grid.style.gridTemplateRows = "repeat(" + gridHeight + ", 1fr)";  
+    grid.style.gridTemplateColumns = "repeat(" + gridHeight + ", 1fr)";
+    grid.style.gridTemplateRows = "repeat(" + gridHeight + ", 1fr)";  
 
   // Create new divs based on random array colours
     for(let i = 0; i < totalSquares; i++){                   
       var pixel = document.createElement("div");
       pixel.style.background = colourArray[i];
       pixel.style.width = pixelHeightAndWidth +"px";  
-      pixel.style.height = pixelHeightAndWidth +"px";   
+      pixel.style.height = pixelHeightAndWidth +"px"; 
+      pixel.style.border = "1px solid black";  
       document.getElementById("grid").appendChild(pixel);
     }
 
