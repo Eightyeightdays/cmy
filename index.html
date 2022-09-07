@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;900&display=swap" rel="stylesheet"> 
     <script async src="index.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,13 +16,17 @@
   
         <div id="container-inner">
           <h1 id="title">Random CMY Colour Grid Generator</h1>
-          <div id="instructions">Enter a number between 1 and 100</div>
-          <div id="heightinput">Height/Width
+          
+          <form>
+            <div id="instructions">Enter a number between 1 and 100</div>
+            <div id="heightinput">Height/Width
              <input type="number" id="height" name="height" min="1" max="100"> 
-          </div>
-          <div id="buttonBox">
-            <div id="button" onclick="generateRandomGrid()">GENERATE GRID</div>
-          </div>
+            </div>
+            <div id="buttonBox">
+              <div id="button" onclick="generateRandomGrid()">GENERATE GRID</div>
+            </div>
+          </form>
+          
         </div>
 
         <div class="container-grid">

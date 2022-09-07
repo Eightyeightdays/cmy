@@ -31,16 +31,17 @@ html, body {
 }
 
 .container-grid{
-  background: tomato;
+  background: ;
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
 }
 
+
 #grid{
+  position: relative;
   display: grid;
-  outline: 1px solid black;
 }
 
 /* ************** */
@@ -50,16 +51,28 @@ html, body {
 }
 
 #title{
-  font-size: 15px;
+  font-size: 45px;
   font-variant: small-caps;
   letter-spacing: 0.2em;
+  font-weight: 800;
+  margin-bottom: 1em;
 }
 
+form{
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  border-radius: 5px;
+}
 #instructions{
   font-size: 20px;
 }
 
 #heightinput{
+  margin: 1em;
   background: magenta;
   display: flex;
   align-items: center;
@@ -99,15 +112,28 @@ input[type="number"]{
   /* color: white; */
 }
 
+.animation{
+  animation: fade 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+@keyframes fade{
+  0%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 1;
+      top: 0;
+  }
+}
+
 @media(orientation: portrait){
   #container{
     flex-direction: column;
   }
-  #container-inner{
-    /* height: 100%; */
-  }
-  .container-grid{
-    /* height: 100%; */
-  }
 }
 
+@media(max-height: 815px) and (orientation: portrait){
+  #title{
+    font-size: 30px;
+  }
+}
