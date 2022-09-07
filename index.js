@@ -1,42 +1,40 @@
-function randomCMY(height, width){
-    if  (document.getElementById("height").value >100){
+function generateRandomGrid(){
+
+  var gridHeight = document.getElementById("height").value;             // Specify grid rows for CSS
+  var totalSquares = gridHeight * gridHeight;                 // Total number of squares in the grid
+  var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  var viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  var smallestDimension;
+  var pixelHeightAndWidth;
+  var button=document.getElementById("button");
+  var grid = document.getElementById("grid");
+  var colourArray = [];
+
+  if(viewportWidth < viewportHeight){
+    smallestDimension = viewportWidth;
+  }else{
+    smallestDimension = viewportHeight; 
+  }
+
+  pixelHeightAndWidth = (smallestDimension *0.9) / gridHeight;
+
+  if (gridHeight > 100 || gridHeight < 1){
       alert("Input must be no greater than 100");
-      document.getElementById("height").value = "";
+      document.getElementById("height").value = 2;
       return;
     }
-     
-    if (result.firstChild) {   // IF A GRID IS ALREADY DISPLAYED CLEAR IT FIRST
-        COLOUR_ARRAY = [];
-     var grid= document.getElementById("result");
-     while (grid.firstChild) {    
-       grid.removeChild(grid.firstChild);}
-   grid.style.display = "none";
-   grid.style.background = "";
-    var button=document.getElementById("generate");
-      button.innerHTML = "GENERATE GRID"; 
+    // If a grid is already displayed clear it first
+    if (grid.firstChild) {   
+        button.innerHTML = "CLEAR GRID"; 
+        while (grid.firstChild) {    
+            grid.removeChild(grid.firstChild);
+        }
+        button.innerHTML = "GENERATE GRID"; 
    }else{
-    var button=document.getElementById("generate");
-      button.innerHTML = "GENERATE GRID"; 
-     
-    const HEIGHT = document.getElementById("height").value;             // Specify grid rows for CSS
-    const SQUARES = HEIGHT*HEIGHT;    // Total number of squares
-    const COLOUR_ARRAY = [];
-    const VIEWPORT_WIDTH = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-    const VIEWPORT_HEIGHT = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-    var SMALLER_SIDE;
-    var PIXEL_HEIGHT_WIDTH;
-     
-    if(VIEWPORT_WIDTH < VIEWPORT_HEIGHT){
-      SMALLER_SIDE = VIEWPORT_WIDTH;
-    }else{
-      SMALLER_SIDE = VIEWPORT_HEIGHT; 
-    }
-    
-    PIXEL_HEIGHT_WIDTH = (SMALLER_SIDE *0.4) / HEIGHT;
-   
-    for(let i = 0; i < SQUARES; i++){ // CREATE AN ARRAY OF RANDOM COLOURS EQUAL TO THE SURFACE AREA OF THE GRID
+    // Create an array of random colours equal to the surface area of the grid
+    for(let i = 0; i < totalSquares; i++){ 
      var colour = ""; 
-     let random = Math.floor(Math.random() *3 + 1); // Number of choices = 3 + min 
+     let random = Math.floor(Math.random() *3 + 1); // Number of colours + min 
      if(random == 1){ 
        colour = "cyan"; 
      }else if(random == 2){ 
@@ -44,26 +42,28 @@ function randomCMY(height, width){
      }else{ 
        colour = "yellow"; 
      } 
-     COLOUR_ARRAY.push(colour); 
+      colourArray.push(colour); 
      } 
     
-   var grid = document.getElementById("result");       // Dynamically set grid dimensions based on user input
-   grid.style.gridTemplateColumns = "repeat(" +HEIGHT+ ", 1fr)";
-   grid.style.gridTemplateRows = "repeat(" +HEIGHT+ ", 1fr)";  
-   grid.style.display = "grid";
-   grid.style.background = "black";
-     
-   for(let i = 0; i < SQUARES; i++){                   // Create new divs based on random array colours
-     var pixel = document.createElement("div");
-     pixel.style.background = COLOUR_ARRAY[i];
-     pixel.style.width = PIXEL_HEIGHT_WIDTH+"px";  
-     pixel.style.height = PIXEL_HEIGHT_WIDTH+"px";   
-     document.getElementById("result").appendChild(pixel);
-     }
-     var button=document.getElementById("generate");
-      button.innerHTML = "CLEAR GRID";
+  // Dynamically set grid dimensions based on user input
+   grid.style.gridTemplateColumns = "repeat(" +gridHeight + ", 1fr)";
+   grid.style.gridTemplateRows = "repeat(" + gridHeight + ", 1fr)";  
+
+  // Create new divs based on random array colours
+    for(let i = 0; i < totalSquares; i++){                   
+      var pixel = document.createElement("div");
+      pixel.style.background = colourArray[i];
+      pixel.style.width = pixelHeightAndWidth +"px";  
+      pixel.style.height = pixelHeightAndWidth +"px";   
+      document.getElementById("grid").appendChild(pixel);
+    }
+
+    button.innerHTML = "CLEAR GRID";
+
    }
+   
+}
      
-   }
+
    
    
