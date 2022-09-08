@@ -38,10 +38,20 @@ function generateRandomGrid(){
     // If a grid is already displayed clear it first
     if (grid.firstChild) {   
         button.innerHTML = "CLEAR GRID"; 
-        grid.style.outline = 0;
-        while (grid.firstChild) {    
-            grid.removeChild(grid.firstChild);
+        for(var child of grid.children){
+          child.classList.remove("animation");
+          child.classList.add("animation-out");
         }
+        document.documentElement.style.setProperty("--screenWidth", `-${viewportWidth}px`); // update the CSS variable to dynamically set keyframe rule
+        grid.style.outline = "1px solid transparent"; // remove outline otherwise it will still be visible when grid is empty              
+        // remove elements from DOM after animation has run
+        setTimeout(()=>{
+              
+          while (grid.firstChild) {    
+            grid.removeChild(grid.firstChild);
+          }
+        },"3000")
+
         button.innerHTML = "GENERATE GRID"; 
    }else{
     // Create an array of random colours equal to the surface area of the grid
@@ -64,20 +74,25 @@ function generateRandomGrid(){
     grid.style.outline = "1px solid black";
 
   // Create new divs based on random array colours
-    var delay = 0.1; 
+    var delay = 0.1; // add dynamic animation delay
+    
     for(let i = 0; i < totalSquares; i++){                    
       var pixel = document.createElement("div");
-      pixel.style.background = colourArray[i];
-      pixel.style.width = pixelHeightAndWidth +"px";  
-      pixel.style.height = pixelHeightAndWidth +"px"; 
-      pixel.style.border = "1px solid black";  
-      pixel.style.animationDelay = delay +"s";
-      pixel.style.opacity = 0;
-      pixel.style.position = "relative";
-      pixel.style.top = "-200px";
-      pixel.classList.add("animation")
+      pixel.classList.add("animation");
+
+      Object.assign(pixel.style, {
+        background: colourArray[i],
+        width: pixelHeightAndWidth + "px",
+        height: pixelHeightAndWidth + "px",
+        border: "1px solid black",
+        animationDelay: delay + "s",
+        opacity: 0,
+        position: "relative",
+        left: `-${viewportWidth}px`,
+      });
+     
+      delay+= 0.035;
       document.getElementById("grid").appendChild(pixel);
-      delay+= 0.05;
     }
 
     button.innerHTML = "CLEAR GRID";
