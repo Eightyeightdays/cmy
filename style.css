@@ -164,7 +164,7 @@ input[type="number"]{
 
 @keyframes fadeOutRight{
   0%{
-      opacity: 1;
+      /* opacity: 1; */
       right: 0;
   }
   100%{
