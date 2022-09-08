@@ -114,6 +114,23 @@ input[type="number"]{
   /* color: white; */
 }
 
+input[type="file"]{
+  position: absolute; left: -99999rem;
+}
+
+.selectFileLabel{
+  cursor: pointer;
+  background: gold;
+  padding: 1em;
+  margin-top: 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+#image{
+  width: 50vw;
+}
+
 @media(orientation: portrait){
   #container{
     flex-direction: column;

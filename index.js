@@ -149,5 +149,17 @@ input.addEventListener("keypress", function(event) {
   }
 }); 
 
-   
+///
+function handleFileSelect(event){
+  const previewImage = document.getElementById("image");
+  const fileName = document.getElementById("fileName");
+  let currentFile = event.target.files[0];
+  let currentName = currentFile.name;
+    if(currentFile.type !== "image/png" && currentFile.type !== "image/jpg" && currentFile.type !== "image/jpeg" && currentFile.type !== "image/gif"){
+      alert("File must be either png, jpg or gif format only");
+    }else{
+      previewImage.src = URL.createObjectURL(currentFile);   // create a preview of the selected file
+  }
+  fileName.insertAdjacentHTML("afterBegin", currentName);
+}   
    

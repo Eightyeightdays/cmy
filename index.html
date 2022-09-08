@@ -26,7 +26,13 @@
               <div id="button" onclick="generateRandomGrid()">GENERATE GRID</div>
             </div>
           </form>
-          
+          <label class="selectFileLabel">
+            
+            <input type="file" onchange="handleFileSelect(event)">
+            Select a file
+          </label>
+          <span id="fileName"></span>
+          <image id="image"/>
         </div>
 
         <div class="container-grid">
