@@ -11,18 +11,33 @@ function generateRandomGrid(){
   var maxGridWidth;
   var pixelHeightAndWidth;
   var colourArray = [];
-  var animationInClass;
-  var animationOutClass;
+  var delay = 0.1; // add dynamic transition delay
+  var delayIncrement;
+  var timeoutDelay;
+  var transitionLength = 3;
+
+  // determine delay increment based on grid size
+  if(gridHeight >= 40){
+    delayIncrement = 0.001;
+  }else if(gridHeight >= 30){
+    delayIncrement = 0.002;
+  }else if(gridHeight >= 20){
+    delayIncrement = 0.003;
+  }else if(gridHeight >= 10){
+    delayIncrement = 0.004;
+  }else{
+    delayIncrement = 0.1;
+  }
+
+  // determine timeout duration in milliseconds based on total animation runtime
+  var timeoutDelay = ((((totalSquares -1) * delayIncrement) + delay) + transitionLength) * 1000;
+  console.log(timeoutDelay)
 
   // determine screen orientation for optimal animation direction
   if(screen.orientation.type === "portrait-primary" || screen.orientation.type === "portrait-secondary"){
       direction = "left";
-      animationInClass = "animation-in-left";
-      animationOutClass = "animation-out-left";
     }else{
       direction = "right";
-      animationInClass = "animation-in-right";
-      animationOutClass = "animation-out-right";
   }
 
   // determine longest and shortest dimensions
@@ -43,7 +58,6 @@ function generateRandomGrid(){
   
   pixelHeightAndWidth = maxGridWidth / gridHeight;
   
-
   if (gridHeight > 100 || gridHeight < 1){
       alert("Input must be between 1 and 100");
       document.getElementById("height").value = 2;
@@ -51,24 +65,29 @@ function generateRandomGrid(){
     }
     // If a grid is already displayed, clear it first
     if (grid.firstChild) {   
+      if(gridHeight <= 50){  // only animate removal for smaller grids
         for(var child of grid.children){
-        //  child.classList.remove(animationInClass); 
-         child.style.opacity = 0;
+          child.style.opacity = 0;
           child.style[direction] = `-${viewportWidth}px`;
-          // child.classList.add(animationOutClass);
         }
-        document.documentElement.style.setProperty("--screenWidth", `-${viewportWidth}px`); // update the CSS variable to dynamically set keyframe rule
-        grid.style.outline = "1px solid transparent"; // remove outline otherwise it will still be visible when grid is empty              
-        // remove elements from DOM after animation has run
-        setTimeout(()=>{  
-          while (grid.firstChild) {    
-            grid.removeChild(grid.firstChild);
-          }
-        },"3000")
+      }else{
+        while(grid.firstChild) {    
+          grid.removeChild(grid.firstChild);
+        }
+      }
+      grid.style.outline = "1px solid transparent"; // remove outline otherwise it will still be visible when grid is empty              
+      // remove elements from DOM after animation has run
+      setTimeout(()=>{  
+        while (grid.firstChild) {    
+          grid.removeChild(grid.firstChild);
+        }
+      },timeoutDelay)
 
-        button.innerHTML = "GENERATE GRID"; 
+      button.innerHTML = "GENERATE GRID"; 
    }else{
     // Create an array of random colours equal to the surface area of the grid
+    //  dynamically set grid transition length
+    document.documentElement.style.setProperty("--transitionLength", timeoutDelay+"ms");
 
     for(let i = 0; i < totalSquares; i++){ 
      var colour = ""; 
@@ -83,17 +102,15 @@ function generateRandomGrid(){
       colourArray.push(colour); 
      } 
     
-  // Dynamically set grid dimensions based on user input
+    // Dynamically set grid dimensions based on user input
     grid.style.gridTemplateColumns = "repeat(" + gridHeight + ", 1fr)";
     grid.style.gridTemplateRows = "repeat(" + gridHeight + ", 1fr)";  
     grid.style.outline = "1px solid black";
 
-  // Create new divs based on random array colours
-    var delay = 0.1; // add dynamic animation delay
-    
+    // Create new divs based on random array colours
     for(let i = 0; i < totalSquares; i++){                    
       var pixel = document.createElement("div");
-      // pixel.classList.add(animationInClass);
+
       Object.assign(pixel.style, {
         background: colourArray[i],
         width: pixelHeightAndWidth + "px",
@@ -101,20 +118,23 @@ function generateRandomGrid(){
         border: "1px solid black",
         opacity: 0,
         position: "relative",
-        transition: `all 2s ease-out ${delay}s`, // TESTING
       });
-      pixel.style[direction] =`-${viewportWidth}px`, // dynamically set pixel position for animation
-      delay+= 0.035;
+
+      if(gridHeight <= 50){ // only animate smaller grids
+        pixel.style.transition = `all ${transitionLength}s ease-out ${delay}s`;
+      }
+
+      pixel.style[direction] =`-${viewportWidth}px`, // dynamically set pixel position for transition
+      delay+= delayIncrement;
       document.getElementById("grid").appendChild(pixel);
     }
-    // once the child nodes have been created, change their properties to allow transitions to replace animations
+    // once the child nodes have been created, change their properties to initiate transitions
     setTimeout(()=>{
       for(var child of grid.children){
         child.style.opacity = 1;
         child.style[direction] = 0;
       }
-    },10)
-    
+    },1);
 
     button.innerHTML = "CLEAR GRID";
   } 

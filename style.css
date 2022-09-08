@@ -1,6 +1,6 @@
 :root{
     font-family: Rubik;
-    --screenWidth: 0;   /* declare a variable to be altered with javascript*/
+    --transitionLength: 1s;
   }
 
 *, *:before, *:after {
@@ -39,12 +39,11 @@ html, body {
   place-items: center;
 }
 
-
 #grid{
   position: relative;
   display: grid;
   outline: 1px solid transparent;
-  transition: outline 3s ease-out;
+  transition: outline var(--transitionLength) ease-out;
 }
 
 /* ************** */
@@ -113,64 +112,6 @@ input[type="number"]{
   border-radius: 1em;
   background: cyan;
   /* color: white; */
-}
-
-.animation-in-left{
-  animation: fadeInLeft 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-}
-
-@keyframes fadeInLeft{
-  0%{
-      opacity: 0;
-  }
-  100%{
-      opacity: 1;
-      left: 0;
-  }
-}
-
-.animation-out-left{
-  animation: fadeOutLeft 2.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-}
-
-@keyframes fadeOutLeft{
-  0%{
-      opacity: 1;
-      left: 0;
-  }
-  100%{
-      opacity: 0;
-      left: var(--screenWidth);
-  }
-}
-
-.animation-in-right{
-  animation: fadeInRight 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-}
-
-@keyframes fadeInRight{
-  0%{
-      opacity: 0;
-  }
-  100%{
-      opacity: 1;
-      right: 0;
-  }
-}
-
-.animation-out-right{
-  animation: fadeOutRight 2.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-}
-
-@keyframes fadeOutRight{
-  0%{
-      /* opacity: 1; */
-      right: 0;
-  }
-  100%{
-      opacity: 0;
-      right: var(--screenWidth);
-  }
 }
 
 @media(orientation: portrait){
