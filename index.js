@@ -1,5 +1,5 @@
 function generateRandomGrid(){
-  
+  var direction;
   var button=document.getElementById("button");
   var grid = document.getElementById("grid");
   var gridHeight = document.getElementById("height").value;             // Specify grid rows for CSS
@@ -11,7 +11,21 @@ function generateRandomGrid(){
   var maxGridWidth;
   var pixelHeightAndWidth;
   var colourArray = [];
+  var animationInClass;
+  var animationOutClass;
 
+  // determine screen orientation for optimal animation direction
+  if(screen.orientation.type === "portrait-primary" || screen.orientation.type === "portrait-secondary"){
+      direction = "left";
+      animationInClass = "animation-in-left";
+      animationOutClass = "animation-out-left";
+    }else{
+      direction = "right";
+      animationInClass = "animation-in-right";
+      animationOutClass = "animation-out-right";
+  }
+
+  // determine longest and shortest dimensions
   if(viewportWidth < viewportHeight){   // portrait orientation
     shortestDimension = viewportWidth;
     longestDimension = viewportHeight;
@@ -39,8 +53,8 @@ function generateRandomGrid(){
     if (grid.firstChild) {   
         button.innerHTML = "CLEAR GRID"; 
         for(var child of grid.children){
-          child.classList.remove("animation");
-          child.classList.add("animation-out");
+          child.classList.remove(animationInClass);
+          child.classList.add(animationOutClass);
         }
         document.documentElement.style.setProperty("--screenWidth", `-${viewportWidth}px`); // update the CSS variable to dynamically set keyframe rule
         grid.style.outline = "1px solid transparent"; // remove outline otherwise it will still be visible when grid is empty              
@@ -78,7 +92,7 @@ function generateRandomGrid(){
     
     for(let i = 0; i < totalSquares; i++){                    
       var pixel = document.createElement("div");
-      pixel.classList.add("animation");
+      pixel.classList.add(animationInClass);
 
       Object.assign(pixel.style, {
         background: colourArray[i],
@@ -88,9 +102,8 @@ function generateRandomGrid(){
         animationDelay: delay + "s",
         opacity: 0,
         position: "relative",
-        left: `-${viewportWidth}px`,
       });
-     
+      pixel.style[direction] =`-${viewportWidth}px`, // dynamically set pixel position for animation
       delay+= 0.035;
       document.getElementById("grid").appendChild(pixel);
     }

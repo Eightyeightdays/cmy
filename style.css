@@ -17,6 +17,7 @@ html, body {
 #container{
   height: 100%;
   display: flex;
+  overflow: hidden;
 }
 
 #container-inner{
@@ -114,11 +115,11 @@ input[type="number"]{
   /* color: white; */
 }
 
-.animation{
-  animation: fade 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+.animation-in-left{
+  animation: fadeInLeft 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
 }
 
-@keyframes fade{
+@keyframes fadeInLeft{
   0%{
       opacity: 0;
   }
@@ -128,11 +129,11 @@ input[type="number"]{
   }
 }
 
-.animation-out{
-  animation: fadeOut 2.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+.animation-out-left{
+  animation: fadeOutLeft 2.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
 }
 
-@keyframes fadeOut{
+@keyframes fadeOutLeft{
   0%{
       opacity: 1;
       left: 0;
@@ -140,6 +141,35 @@ input[type="number"]{
   100%{
       opacity: 0;
       left: var(--screenWidth);
+  }
+}
+
+.animation-in-right{
+  animation: fadeInRight 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+@keyframes fadeInRight{
+  0%{
+      opacity: 0;
+  }
+  100%{
+      opacity: 1;
+      right: 0;
+  }
+}
+
+.animation-out-right{
+  animation: fadeOutRight 2.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+@keyframes fadeOutRight{
+  0%{
+      opacity: 1;
+      right: 0;
+  }
+  100%{
+      opacity: 0;
+      right: var(--screenWidth);
   }
 }
 
