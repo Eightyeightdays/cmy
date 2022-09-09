@@ -28,11 +28,19 @@ function getColoursFromImage(event){
     URL.revokeObjectURL(currentFile);
 
     
-    var step1 = document.getElementById("step-1");
-    // step1.classList.add("spin");
+    
        
     var step2 = document.getElementById("step-2");
-    step2.style.display = "block";
+    var step3 = document.getElementById("step-3")
+    var step2Label = document.getElementById("step-2-label");
+    var step3Label = document.getElementById("step-3-label");
+    var header = document.getElementById("header");
+    var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    header.style.left = `-${viewportWidth}px`;
+    step2.style.left = 0;
+    step3.style.left = 0;
+    step2Label.style.right = 0;
+    step3Label.style.right = 0;
 }
 
 

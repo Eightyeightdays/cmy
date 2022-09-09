@@ -22,14 +22,55 @@ html, body {
 
 #container-inner{
   background: gainsboro;
-  padding: 1.5em;
   height: 100%;
   width: 100%;
   flex: 0 0 50%;
   display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: flex-start;
+  
+}
+
+#labels-left{
+  background: dodgerblue;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  height: 100%;
+  /* width: 100%; */
+}
+
+#labels-right{
+  background: dodgerblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+}
+
+.label{
+  background: tomato;
+  padding: 1em;
+  color: white;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+  margin: 0.5em 0;
+  position: relative;
+  right: -220px;
+  transition: all 1s cubic-bezier(.59,.89,.67,-0.28);
+  box-shadow: 20px 29px 21px -7px rgba(0,0,0,0.65);
+}
+
+#step-1-label{
+  right: 0;
+}
+
+label{
+  cursor: pointer;
 }
 
 .container-grid{
@@ -73,41 +114,18 @@ html, body {
   font-weight: 800;
 }
 
-#step-2{
-  background: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-  border-radius: 5px;
-}
-
 #instructions{
   font-size: 20px;
-}
-
-#heightinput{
-  margin: 1em;
-  background: magenta;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5em;
-  border-radius: 1em;
-  font-size: 10px;
-  width: max-content
 }
 
 input[type="number"]{
   text-align: center;
   margin-left: 0.5em;
   width: 2.5em;
-  font-size: 2em;
+  /* font-size: 2em; */
   background: white;
   -moz-appearance: textfield;
   border: none;
-  border-radius: 5px;
 }
 
 #buttonBox{
@@ -117,28 +135,12 @@ input[type="number"]{
   background: dodgerblue;
 }
 
-#button{
-  font-size: 22px;
-  cursor: pointer;
-  padding: 0.8em;
-  width: auto;
-  margin: auto;
-  border-radius: 1em;
-  background: tomato;
-  /* color: white; */
-}
-
 input[type="file"]{
   position: absolute; left: -99999rem;
 }
 
 .selectFileLabel{
   cursor: pointer;
-  background: gold;
-  padding: 1em;
-  margin-top: 1em;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
 }
 
 /* #fileName{
@@ -156,38 +158,68 @@ input[type="file"]{
   display: grid;
   place-items: center;
   object-fit: cover;
+  background: white;
+  position: relative;
 }
 
 #image{
   object-fit: cover;
 }
 
+.step{
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  padding: 1em;
+  cursor: pointer;
+  background: tomato;
+  margin: 0.5em 0;
+  position: relative;
+  color: white;
+  box-shadow: -20px 29px 21px -7px rgba(0,0,0,0);
+  transition: left 1s cubic-bezier(.59,.89,.67,-0.28);
+}
+
+.step:hover{
+  box-shadow: -20px 29px 21px -7px rgba(0,0,0,0.65);
+}
+
 #step-1{
-  background:;
-  width: 200px;
-  height: 200px;
   display: grid;
   place-items: center;
 }
 
 #step-2{
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: -200px;
 }
 
 #step-3{
-  display: none;
+  left: -200px;
 }
 
-.spin{
-  animation: rotate 2s cubic-bezier(0,1.12,.5,1.73);
+#step-4{
+  left: -200px;
 }
 
-@keyframes rotate {
-  100%{
-    transform: rotate(3600deg);
+.error-animation{
+  animation: shake 0.35s 1;
+}
 
+@keyframes shake {
+    0% { transform: translateX(0) }
+    25% { transform: translateY(50px) }
+    50% { 
+      transform: translateY(-50px);
+      background: red;
+      outline: 3px solid red;
+      outline-offset: 15px;
+    }
+    75% { transform: translateY(50px) }
+    100% { transform: translateX(0) }
   }
-}
+
 
 @media(orientation: portrait){
   #container{

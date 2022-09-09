@@ -15,7 +15,9 @@ function generateRandomGrid(){
   var timeoutDelay;
   var transitionLength = 3;
   var header = document.getElementById("header");
-  var step3 = document.getElementById("step-3");
+  var step4 = document.getElementById("step-4");
+  var step4Label = document.getElementById("step-4-label");
+  var step2Label = document.getElementById("step-2-label");
 
   // determine delay increment based on grid size
   if(gridHeight >= 40){
@@ -61,13 +63,17 @@ function generateRandomGrid(){
   pixelHeightAndWidth = maxGridWidth / gridHeight;
   
   if (gridHeight > 100 || gridHeight < 1){
-      alert("Input must be between 1 and 100");
+      // alert("Input must be between 1 and 100");
+      step2Label.classList.add("error-animation");
       document.getElementById("height").value = 2;
+      setTimeout(()=>{
+        step2Label.classList.remove("error-animation");
+      }, 1000)
       return;
     }
     // If a grid is already displayed, clear it first
     if (grid.firstChild) {   
-      header.style.left = 0;
+      // header.style.left = 0;
 
       if(gridHeight <= 50){  // only animate removal for smaller grids
         for(var child of grid.children){
@@ -86,9 +92,9 @@ function generateRandomGrid(){
           grid.removeChild(grid.firstChild);
         }
       },timeoutDelay)
-
-      button.innerHTML = "GENERATE GRID"; 
-      step3.style.display = "none";
+      step4.style.left = "-200px"; // DISABLED DURING UI BUILD
+      step4Label.style.right = "-220px";
+      button.innerHTML = "Generate Grid"; 
    }else{
     // Create an array of random colours equal to the surface area of the grid
     //  dynamically set grid transition length
@@ -96,7 +102,7 @@ function generateRandomGrid(){
     //  hidden grid gets displayed on button click (REMOVE?)
     document.querySelector(".container-grid").style.display = "grid";
     //
-    header.style.left = `-${viewportWidth}px`;
+    
     // Dynamically set grid dimensions based on user input
     grid.style.gridTemplateColumns = "repeat(" + gridHeight + ", 1fr)";
     grid.style.gridTemplateRows = "repeat(" + gridHeight + ", 1fr)";  
@@ -132,10 +138,11 @@ function generateRandomGrid(){
       }
     },1);
 
-    button.innerHTML = "CLEAR GRID";
+    button.innerHTML = "Clear Grid";
 
     setTimeout(()=>{  
-    step3.style.display = "block";
+      step4.style.left = 0; // DISABLED DURING UI BUILD
+      step4Label.style.right = 0;
     },timeoutDelay)
     
   } 
