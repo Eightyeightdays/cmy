@@ -15,22 +15,16 @@ function getColours(event){
     var colourPalette = [];
 
     if(img.complete){
-        colorThief.getPalette(img).map(arr => {
-            colourPalette.push(`rgb(${arr[0]},${arr[1]}, ${arr[2]})`);
+        colorThief.getPalette(img).map((arr, index) => {
+            document.documentElement.style.setProperty(`--colour${index}`, `rgb(${arr[0]},${arr[1]},${arr[2]})`);
         });
     }else{
         image.addEventListener('load', function() {
             colorThief.getPalette(img).map((arr, index) => {
-                // colourPalette.push(`rgb(${arr[0]},${arr[1]},${arr[2]})`);
                 document.documentElement.style.setProperty(`--colour${index}`, `rgb(${arr[0]},${arr[1]},${arr[2]})`);
             });
         });
     }
 
-    console.log(colourPalette)
-    var colour0 = colourPalette[0];
-
-    // console.log(colourPalette[3])
-   
 }
 

@@ -1,6 +1,6 @@
 // import getColours from "./handleImage.js";
 
-export function generateRandomGrid(){
+function generateRandomGrid(){
   var direction;
   var button=document.getElementById("button");
   var grid = document.getElementById("grid");
@@ -41,6 +41,7 @@ export function generateRandomGrid(){
     }else{
       direction = "right";
   }
+  // console.log(screen.orientation.type)
 
   // determine longest and shortest dimensions
   if(viewportWidth < viewportHeight){   // portrait orientation
@@ -90,31 +91,19 @@ export function generateRandomGrid(){
     // Create an array of random colours equal to the surface area of the grid
     //  dynamically set grid transition length
     document.documentElement.style.setProperty("--transitionLength", timeoutDelay+"ms");
-
-    for(let i = 0; i < totalSquares; i++){ 
-     var colour = ""; 
-     let random = Math.floor(Math.random() *3 + 1); // Number of colours + min 
-     if(random == 1){ 
-       colour = "cyan"; 
-     }else if(random == 2){ 
-       colour = "magenta"; 
-     }else{ 
-       colour = "yellow"; 
-     } 
-      colourArray.push(colour); 
-     } 
     
     // Dynamically set grid dimensions based on user input
     grid.style.gridTemplateColumns = "repeat(" + gridHeight + ", 1fr)";
     grid.style.gridTemplateRows = "repeat(" + gridHeight + ", 1fr)";  
     grid.style.outline = "1px solid black";
 
-    // Create new divs based on random array colours
-    for(let i = 0; i < totalSquares; i++){                    
+    // Create new divs based on colour palette
+    for(let i = 0; i < totalSquares; i++){       
+      let random = Math.floor(Math.random() *9 + 1);             
       var pixel = document.createElement("div");
 
       Object.assign(pixel.style, {
-        background: colourArray[i],
+        background: `var(--colour${random})`,
         width: pixelHeightAndWidth + "px",
         height: pixelHeightAndWidth + "px",
         border: "1px solid black",
