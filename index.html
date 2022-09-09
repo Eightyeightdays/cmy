@@ -5,20 +5,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;900&display=swap" rel="stylesheet"> 
-    <script async src="index.js"></script>
-    <script src="node_modules/colorthief/dist/color-thief.umd.js"></script>
-    <script async src="handleImage.js"></script>
-    
+    <script src="./index.js"></script>
+    <script src="./node_modules/colorthief/dist/color-thief.umd.js"></script>
+    <script src="./getColoursFromImage.js"></script>
+    <script src="./node_modules/dom-to-image/dist/dom-to-image.min.js"></script>
+    <script src="./createImageFromGrid.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random CMY Grid Generator</title>
+    <title>Random Grid Generator</title>
 </head>
 <body>
     <div id="container">
   
         <div id="container-inner">
-          <h1 id="title">Random CMY Colour Grid Generator</h1>
+          <h1 id="title">Random Grid Generator</h1>
           
           <form>
             <div id="instructions">Enter a number between 1 and 100</div>
@@ -31,11 +32,14 @@
           </form>
           <label class="selectFileLabel">
             
-            <input type="file" onchange="getColours(event)">
+            <input type="file" onchange="getColoursFromImage(event)">
             Select a file
           </label>
           <span id="fileName"></span>
+          <button id="save" onclick="createImageFromGrid()">Save Image</button>
           <image id="image"/>
+
+          <div id="canvas"></div>
         </div>
 
         <div id="palette-container">

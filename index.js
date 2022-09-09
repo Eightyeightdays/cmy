@@ -1,5 +1,3 @@
-// import getColours from "./handleImage.js";
-
 function generateRandomGrid(){
   var direction;
   var button=document.getElementById("button");
@@ -12,7 +10,6 @@ function generateRandomGrid(){
   var shortestDimension;
   var maxGridWidth;
   var pixelHeightAndWidth;
-  var colourArray = [];
   var delay = 0.1; // add dynamic transition delay
   var delayIncrement;
   var timeoutDelay;
@@ -129,12 +126,14 @@ function generateRandomGrid(){
 
     button.innerHTML = "CLEAR GRID";
   } 
+  
 }
    
 //  allow user to activate button with enter key
 var input = document.getElementById("height");
 input.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
+    // console.log("HERE")
     event.preventDefault();
     document.getElementById("button").click();
   }

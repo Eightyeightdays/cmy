@@ -1,4 +1,4 @@
-function getColours(event){
+function getColoursFromImage(event){
     const colorThief = new ColorThief();
     const previewImage = document.getElementById("image");
     const fileName = document.getElementById("fileName");
@@ -10,7 +10,7 @@ function getColours(event){
         }else{
             previewImage.src = URL.createObjectURL(currentFile);   // create a preview of the selected file
     }
-    fileName.insertAdjacentHTML("afterBegin", currentName);
+    fileName.innerText = currentName;
     
     var colourPalette = [];
 
@@ -25,6 +25,6 @@ function getColours(event){
             });
         });
     }
-
 }
+
 
