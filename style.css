@@ -17,7 +17,7 @@ html, body {
 #container{
   height: 100%;
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 #container-inner{
@@ -110,7 +110,7 @@ input[type="number"]{
   width: auto;
   margin: auto;
   border-radius: 1em;
-  background: cyan;
+  background: tomato;
   /* color: white; */
 }
 
@@ -130,6 +130,50 @@ input[type="file"]{
 #image{
   width: 50vw;
 }
+
+#palette-container{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 100vw;
+  height: 200px;
+}
+
+.palette-colour{
+
+}
+
+#colour0{
+  background: var(--colour0);
+}
+#colour1{
+  background: var(--colour1);
+}
+#colour2{
+  background: var(--colour2);
+}
+#colour3{
+  background: var(--colour3);
+}
+#colour4{
+  background: var(--colour4);
+}
+#colour5{
+  background: var(--colour5);
+}
+#colour6{
+  background: var(--colour6);
+}
+#colour7{
+  background: var(--colour7);
+}
+#colour8{
+  background: var(--colour8);
+}
+#colour9{
+  background: var(--colour9);
+}
+
 
 @media(orientation: portrait){
   #container{

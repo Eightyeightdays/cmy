@@ -3,9 +3,12 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;900&display=swap" rel="stylesheet"> 
-    <script async src="index.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;900&display=swap" rel="stylesheet"> 
+    <script async type="module" src="index.js"></script>
+    <script src="node_modules/colorthief/dist/color-thief.umd.js"></script>
+    <script async src="handleImage.js"></script>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,13 +31,25 @@
           </form>
           <label class="selectFileLabel">
             
-            <input type="file" onchange="handleFileSelect(event)">
+            <input type="file" onchange="getColours(event)">
             Select a file
           </label>
           <span id="fileName"></span>
           <image id="image"/>
         </div>
 
+        <div id="palette-container">
+          <div id="colour0"></div>
+          <div id="colour1"></div>
+          <div id="colour2"></div>
+          <div id="colour3"></div>
+          <div id="colour4"></div>
+          <div id="colour5"></div>
+          <div id="colour6"></div>
+          <div id="colour7"></div>
+          <div id="colour8"></div>
+          <div id="colour9"></div>
+        </div>
         <div class="container-grid">
           <div id="grid"></div>
         </div>  
