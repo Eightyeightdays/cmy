@@ -14,6 +14,8 @@ function generateRandomGrid(){
   var delayIncrement;
   var timeoutDelay;
   var transitionLength = 3;
+  var header = document.getElementById("header");
+  var step3 = document.getElementById("step-3");
 
   // determine delay increment based on grid size
   if(gridHeight >= 40){
@@ -65,6 +67,8 @@ function generateRandomGrid(){
     }
     // If a grid is already displayed, clear it first
     if (grid.firstChild) {   
+      header.style.left = 0;
+
       if(gridHeight <= 50){  // only animate removal for smaller grids
         for(var child of grid.children){
           child.style.opacity = 0;
@@ -84,11 +88,15 @@ function generateRandomGrid(){
       },timeoutDelay)
 
       button.innerHTML = "GENERATE GRID"; 
+      step3.style.display = "none";
    }else{
     // Create an array of random colours equal to the surface area of the grid
     //  dynamically set grid transition length
     document.documentElement.style.setProperty("--transitionLength", timeoutDelay+"ms");
-    
+    //  hidden grid gets displayed on button click (REMOVE?)
+    document.querySelector(".container-grid").style.display = "grid";
+    //
+    header.style.left = `-${viewportWidth}px`;
     // Dynamically set grid dimensions based on user input
     grid.style.gridTemplateColumns = "repeat(" + gridHeight + ", 1fr)";
     grid.style.gridTemplateRows = "repeat(" + gridHeight + ", 1fr)";  
@@ -125,6 +133,11 @@ function generateRandomGrid(){
     },1);
 
     button.innerHTML = "CLEAR GRID";
+
+    setTimeout(()=>{  
+    step3.style.display = "block";
+    },timeoutDelay)
+    
   } 
   
 }
@@ -139,5 +152,7 @@ input.addEventListener("keypress", function(event) {
   }
 }); 
   
+//
 
-   
+
+

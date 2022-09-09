@@ -1,7 +1,7 @@
 function getColoursFromImage(event){
     const colorThief = new ColorThief();
     const previewImage = document.getElementById("image");
-    const fileName = document.getElementById("fileName");
+    
     const img = document.querySelector("img");
     let currentFile = event.target.files[0];
     let currentName = currentFile.name;
@@ -10,9 +10,9 @@ function getColoursFromImage(event){
         }else{
             previewImage.src = URL.createObjectURL(currentFile);   // create a preview of the selected file
     }
-    fileName.innerText = currentName;
-    
-    var colourPalette = [];
+
+    // const fileNameLabel = document.getElementById("fileName");
+    // fileNameLabel.innerText = currentName;
 
     if(img.complete){
         colorThief.getPalette(img).map((arr, index) => {
@@ -25,6 +25,14 @@ function getColoursFromImage(event){
             });
         });
     }
+    URL.revokeObjectURL(currentFile);
+
+    
+    var step1 = document.getElementById("step-1");
+    // step1.classList.add("spin");
+       
+    var step2 = document.getElementById("step-2");
+    step2.style.display = "block";
 }
 
 

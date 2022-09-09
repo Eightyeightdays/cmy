@@ -17,11 +17,22 @@
 </head>
 <body>
     <div id="container">
-  
+
+      <div id="header">
+        <h1 id="title">Random Grid Generator</h1>
+      </div>
+
         <div id="container-inner">
-          <h1 id="title">Random Grid Generator</h1>
           
-          <form>
+          <div id="step-1">
+            <label class="selectFileLabel">
+              <input type="file" onchange="getColoursFromImage(event)">
+              Select a file
+            </label>
+            <!-- <span id="fileName"></span> -->
+          </div>
+
+          <div id="step-2">
             <div id="instructions">Enter a number between 1 and 100</div>
             <div id="heightinput">Height/Width
              <input type="number" id="height" name="height" min="1" max="100"> 
@@ -29,31 +40,18 @@
             <div id="buttonBox">
               <div id="button" onclick="generateRandomGrid()">GENERATE GRID</div>
             </div>
-          </form>
-          <label class="selectFileLabel">
-            
-            <input type="file" onchange="getColoursFromImage(event)">
-            Select a file
-          </label>
-          <span id="fileName"></span>
-          <button id="save" onclick="createImageFromGrid()">Save Image</button>
-          <image id="image"/>
+          </div>
 
-          <div id="canvas"></div>
+          <div id="step-3">
+            <button id="save" onclick="createImageFromGrid()">Save Image</button>
+          </div>
+      
         </div>
 
-        <div id="palette-container">
-          <div id="colour0"></div>
-          <div id="colour1"></div>
-          <div id="colour2"></div>
-          <div id="colour3"></div>
-          <div id="colour4"></div>
-          <div id="colour5"></div>
-          <div id="colour6"></div>
-          <div id="colour7"></div>
-          <div id="colour8"></div>
-          <div id="colour9"></div>
+        <div id="image-container">
+          <img id="image">
         </div>
+        
         <div class="container-grid">
           <div id="grid"></div>
         </div>  
