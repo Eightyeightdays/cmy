@@ -20,12 +20,15 @@
 
       <div id="header">
         <h1 id="title">Random Grid Generator</h1>
+        
       </div>
 
         <div id="container-inner">
         
           <div id="labels-left">
-    
+
+            
+
             <div id="step-1" class="step">
               <label class="selectFileLabel">
                 <input type="file" onchange="getColoursFromImage(event)">
@@ -43,6 +46,7 @@
               <div id="button" onclick="generateRandomGrid()">Generate Grid</div>
             </div>
 
+            <div id="toggle-grid" class="step" onclick="toggleGridLines()">Toggle Grid Lines</div>
             <div id="step-4" class="step">
               <div id="save" onclick="createImageFromGrid()">Save Image</div>
             </div>
@@ -53,6 +57,7 @@
             <div id="step-1-label" class="label">Either jpg, png or gif</div>
             <div id="step-2-label" class="label">Between 1 and 100</div>
             <div id="step-3-label" class="label">Using your colour palette</div>
+            <div id="toggleIndicator" class="label">On</div>
             <div id="step-4-label" class="label">As png</div>
           </div>
       

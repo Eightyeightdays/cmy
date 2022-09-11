@@ -18,6 +18,8 @@ function generateRandomGrid(){
   var step4 = document.getElementById("step-4");
   var step4Label = document.getElementById("step-4-label");
   var step2Label = document.getElementById("step-2-label");
+  var toggle = document.getElementById("toggle-grid");
+  var toggleIndicator = document.getElementById("toggleIndicator");
 
   // determine delay increment based on grid size
   if(gridHeight >= 40){
@@ -94,6 +96,8 @@ function generateRandomGrid(){
       },timeoutDelay)
       step4.style.left = "-200px"; // DISABLED DURING UI BUILD
       step4Label.style.right = "-220px";
+      toggle.style.left = "-200px";
+      toggleIndicator.style.right = "-220px";
       button.innerHTML = "Generate Grid"; 
    }else{
     // Create an array of random colours equal to the surface area of the grid
@@ -102,7 +106,6 @@ function generateRandomGrid(){
     //  hidden grid gets displayed on button click (REMOVE?)
     document.querySelector(".container-grid").style.display = "grid";
     //
-    
     // Dynamically set grid dimensions based on user input
     grid.style.gridTemplateColumns = "repeat(" + gridHeight + ", 1fr)";
     grid.style.gridTemplateRows = "repeat(" + gridHeight + ", 1fr)";  
@@ -112,14 +115,18 @@ function generateRandomGrid(){
     for(let i = 0; i < totalSquares; i++){       
       let random = Math.floor(Math.random() *9 + 1);             
       var pixel = document.createElement("div");
-
+      var toggleIndicator = document.getElementById("toggleIndicator");
+      
+      if(toggleIndicator.innerText === "On"){
+        pixel.classList.add("pixel", "border"); // only add border when toggle is set to ON
+      }else{
+        pixel.classList.add("pixel")
+      }
+      
       Object.assign(pixel.style, {
         background: `var(--colour${random})`,
         width: pixelHeightAndWidth + "px",
         height: pixelHeightAndWidth + "px",
-        border: "1px solid black",
-        opacity: 0,
-        position: "relative",
       });
 
       if(gridHeight <= 50){ // only animate smaller grids
@@ -127,7 +134,7 @@ function generateRandomGrid(){
       }
 
       pixel.style[direction] =`-${viewportWidth}px`, // dynamically set pixel position for transition
-      delay+= delayIncrement;
+      delay+= delayIncrement;                       // increase transition delay for each subsequent pixel
       document.getElementById("grid").appendChild(pixel);
     }
     // once the child nodes have been created, change their properties to initiate transitions
@@ -141,8 +148,10 @@ function generateRandomGrid(){
     button.innerHTML = "Clear Grid";
 
     setTimeout(()=>{  
-      step4.style.left = 0; // DISABLED DURING UI BUILD
+      step4.style.left = 0; 
       step4Label.style.right = 0;
+      toggle.style.left = 0;
+      toggleIndicator.style.right = 0;
     },timeoutDelay)
     
   } 
@@ -160,6 +169,17 @@ input.addEventListener("keypress", function(event) {
 }); 
   
 //
-
+function toggleGridLines(){
+  var toggleIndicator = document.getElementById("toggleIndicator");
+  document.querySelectorAll(".pixel").forEach(pixel => { 
+    if(pixel.classList.contains("border")){
+      pixel.classList.remove("border");
+      toggleIndicator.innerText = "Off";
+    }else{
+      pixel.classList.add("border");
+      toggleIndicator.innerText = "On";
+    }
+  });
+}
 
 

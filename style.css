@@ -33,7 +33,6 @@ html, body {
 }
 
 #labels-left{
-  background: dodgerblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,26 +42,27 @@ html, body {
 }
 
 #labels-right{
-  background: dodgerblue;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 .label{
-  background: tomato;
+  background: rgba(255,255,255,0.75);
   padding: 1em;
-  color: white;
+  /* color: white; */
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
   margin: 0.5em 0;
   position: relative;
   right: -220px;
   transition: all 1s cubic-bezier(.59,.89,.67,-0.28);
-  box-shadow: 20px 29px 21px -7px rgba(0,0,0,0.65);
+  /* box-shadow: 20px 29px 21px -7px rgba(0,0,0,0.65); */
+  z-index: 1;
 }
 
 #step-1-label{
@@ -132,7 +132,6 @@ input[type="number"]{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: dodgerblue;
 }
 
 input[type="file"]{
@@ -153,17 +152,20 @@ input[type="file"]{
 } */
 
 #image-container{
-  width: 100%;
+  width: 50%;
   height: 100%;
-  display: grid;
-  place-items: center;
   object-fit: cover;
-  background: white;
-  position: relative;
+  background: red;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
 }
 
 #image{
   object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .step{
@@ -171,12 +173,14 @@ input[type="file"]{
   border-bottom-right-radius: 1em;
   padding: 1em;
   cursor: pointer;
-  background: tomato;
+  background: rgba(0,0,0,0.3);
   margin: 0.5em 0;
   position: relative;
   color: white;
-  box-shadow: -20px 29px 21px -7px rgba(0,0,0,0);
+  /* box-shadow: -20px 29px 21px -7px rgba(0,0,0,0); */
   transition: left 1s cubic-bezier(.59,.89,.67,-0.28);
+  z-index: 1;
+  border: 1px solid white;
 }
 
 .step:hover{
@@ -188,19 +192,27 @@ input[type="file"]{
   place-items: center;
 }
 
-#step-2{
+#step-2, #step-3, #step-4{
   display: flex;
   justify-content: center;
   align-items: center;
   left: -200px;
 }
 
-#step-3{
+#toggle-grid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   left: -200px;
 }
 
-#step-4{
-  left: -200px;
+.pixel{
+  opacity: 0;
+  position: relative;
+}
+
+.border{
+  outline: 1px solid black;
 }
 
 .error-animation{
