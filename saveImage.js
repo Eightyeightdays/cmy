@@ -1,6 +1,6 @@
-function createImageFromGrid(){
+function saveImage(){
     var node = document.getElementById("grid");
-    domtoimage.toPng(node, { quality: 0.95 })
+    domtoimage.toPng(node)
     .then(function (dataUrl) {
         var link = document.createElement('a');
         link.download = 'grid.jpeg';

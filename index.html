@@ -5,12 +5,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;900&display=swap" rel="stylesheet"> 
-    <script src="./index.js"></script>
+    <script type="module" src="./index.js"></script>
     <script src="./node_modules/colorthief/dist/color-thief.umd.js"></script>
     <script src="./getColoursFromImage.js"></script>
     <script src="./node_modules/dom-to-image/dist/dom-to-image.min.js"></script>
-    <script src="./createImageFromGrid.js"></script>
-    <script src="./toggleGridLines.js"></script>
+    <script src="./saveimage.js"></script>
+    <script src="./handleKeyPress.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,14 +28,11 @@
         
           <div id="labels-left">
 
-            
-
             <div id="step-1" class="step">
               <label class="selectFileLabel">
                 <input type="file" onchange="getColoursFromImage(event)">
                 Select a file
               </label>
-              <!-- <span id="fileName"></span> -->
             </div>
 
             <div id="step-2" class="step">
@@ -44,12 +41,13 @@
             </div>
 
             <div id="step-3" class="step">
-              <button id="button" onclick="generateRandomGrid()">Generate Grid</button>
+              <button id="button" onclick="handleGrid()">Generate Grid</button>
             </div>
 
             <div id="toggle-grid" class="step" onclick="toggleGridLines()">Toggle Grid Lines</div>
+            
             <div id="step-4" class="step">
-              <div id="save" onclick="createImageFromGrid()">Save Image</div>
+              <div id="save" onclick="saveImage()">Save Image</div>
             </div>
 
           </div>
