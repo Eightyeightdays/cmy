@@ -1,4 +1,4 @@
-import { totalSquares, transitionLength } from "./handleGrid.js";
+import { totalSquares, transitionLength } from "./globals.js";
 import { delay } from "./createGrid.js";
 import {delayIncrement} from "./getDelayIncrement.js";
 

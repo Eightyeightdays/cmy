@@ -1,4 +1,4 @@
-import { button } from "./handleGrid.js";
+import { button } from "./globals.js";
 import { timeoutDelay } from "./getTimeoutDelay.js";
 
 export default function disableButton(){

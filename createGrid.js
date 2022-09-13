@@ -1,4 +1,4 @@
-import { grid, gridHeight, totalSquares, transitionLength, viewportWidth } from "./handleGrid.js";
+import { grid, gridHeight, totalSquares, transitionLength, viewportWidth } from "./globals.js";
 import { direction } from "./getAnimationDirection.js";
 import { delayIncrement } from "./getDelayIncrement.js";
 import { toggleIndicator } from "./transitions.js";

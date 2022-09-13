@@ -1,4 +1,4 @@
-import {gridHeight} from "./handleGrid.js";  
+import {gridHeight} from "./globals.js";
 var delayIncrement;
 
 if(gridHeight >= 40){

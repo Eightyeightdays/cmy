@@ -11,6 +11,10 @@
     <script src="./node_modules/dom-to-image/dist/dom-to-image.min.js"></script>
     <script src="./saveimage.js"></script>
     <script src="./handleKeyPress.js"></script>
+    <!-- <script type="module">
+       import handleGrid from "./handleGrid.js";
+       document.querySelector('#button').addEventListener('click', handleGrid)
+    </script> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,10 +45,10 @@
             </div>
 
             <div id="step-3" class="step">
-              <button id="button" onclick="handleGrid()">Generate Grid</button>
+              <button id="button">Generate Grid</button>
             </div>
 
-            <div id="toggle-grid" class="step" onclick="toggleGridLines()">Toggle Grid Lines</div>
+            <div id="toggle-grid" class="step">Toggle Grid Lines</div>
             
             <div id="step-4" class="step">
               <div id="save" onclick="saveImage()">Save Image</div>

@@ -13,6 +13,7 @@ function getColoursFromImage(event){
         alert("File must be either png, jpg or gif format only");
     }else{
         previewImage.src = URL.createObjectURL(currentFile);   // create a preview of the selected file
+        URL.revokeObjectURL(currentFile);
     }
 
     if(img.complete){
@@ -26,8 +27,7 @@ function getColoursFromImage(event){
             });
         });
     }
-    URL.revokeObjectURL(currentFile);
-
+    
     // animate buttons after file is selected
     header.style.left = "-4000px";
     step2.style.left = 0;

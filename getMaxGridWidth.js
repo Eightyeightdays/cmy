@@ -1,4 +1,4 @@
-import { viewportHeight, viewportWidth } from "./handleGrid.js";
+import { viewportHeight, viewportWidth } from "./globals.js";
 var longestDimension;
 var shortestDimension;
 var maxGridWidth;

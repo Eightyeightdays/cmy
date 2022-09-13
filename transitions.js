@@ -1,5 +1,6 @@
-import { grid, gridHeight } from "./handleGrid.js";
+import { grid, gridHeight } from "./globals.js";
 import { timeoutDelay } from "./getTimeoutDelay.js";
+import { direction } from "./getAnimationDirection.js";
 var toggleIndicator = document.getElementById("toggleIndicator");
 var step4 = document.getElementById("step-4");
 var step4Label = document.getElementById("step-4-label");

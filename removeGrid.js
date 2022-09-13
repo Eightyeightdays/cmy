@@ -1,5 +1,6 @@
-import { gridHeight, viewportWidth, } from "./handleGrid.js";
+import { gridHeight, viewportWidth, } from "./globals.js";
 import { timeoutDelay } from "./getTimeoutDelay.js";
+import { direction } from "./getAnimationDirection.js";
 
 export default function removeGrid(){
     if(gridHeight <= 50){  // only animate removal for smaller grids
