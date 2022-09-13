@@ -95,12 +95,12 @@ label{
   position: absolute;
   z-index: 1;
   width: 100%;
-  top:0;
+  bottom: 0;
   left: 0;
   background: black;
   color: white;
   padding: 1em;
-  transition: all var(--transitionLength) ease-out;
+  transition: all 3s ease-out;
 }
 
 #title, #instructions{
@@ -132,6 +132,11 @@ input[type="number"]{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
 }
 
 input[type="file"]{
@@ -236,6 +241,10 @@ input[type="file"]{
 @media(orientation: portrait){
   #container{
     flex-direction: column;
+  }
+  #image-container{
+    height: 50%;
+    width: 100%;
   }
 }
 

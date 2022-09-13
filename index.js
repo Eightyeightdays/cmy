@@ -1,3 +1,4 @@
+
 function generateRandomGrid(){
   var direction;
   var button=document.getElementById("button");
@@ -13,7 +14,7 @@ function generateRandomGrid(){
   var delay = 0.1; // add dynamic transition delay
   var delayIncrement;
   var timeoutDelay;
-  var transitionLength = 3;
+  var transitionLength = 1;
   var header = document.getElementById("header");
   var step4 = document.getElementById("step-4");
   var step4Label = document.getElementById("step-4-label");
@@ -73,9 +74,18 @@ function generateRandomGrid(){
       }, 1000)
       return;
     }
+    //
+    if(gridHeight > 50){
+      timeoutDelay = 0; // animate buttons immediately for large grids
+    }
+
+    button.disabled = true;   // disable button on click to avoid errors
+      setTimeout(()=>{
+        button.disabled = false;
+      }, timeoutDelay)
+
     // If a grid is already displayed, clear it first
     if (grid.firstChild) {   
-      // header.style.left = 0;
 
       if(gridHeight <= 50){  // only animate removal for smaller grids
         for(var child of grid.children){
@@ -94,14 +104,16 @@ function generateRandomGrid(){
           grid.removeChild(grid.firstChild);
         }
       },timeoutDelay)
-      step4.style.left = "-200px"; // DISABLED DURING UI BUILD
+
+      step4.style.left = "-200px"; //    THESE NEED TO BE CALCULATED ACCORDING TO FONT SIZE/SCREEN DIMENSIONS
       step4Label.style.right = "-220px";
       toggle.style.left = "-200px";
       toggleIndicator.style.right = "-220px";
       button.innerHTML = "Generate Grid"; 
    }else{
+    
     // Create an array of random colours equal to the surface area of the grid
-    //  dynamically set grid transition length
+    //  dynamically set grid transition length via CSS variable
     document.documentElement.style.setProperty("--transitionLength", timeoutDelay+"ms");
     //  hidden grid gets displayed on button click (REMOVE?)
     document.querySelector(".container-grid").style.display = "grid";
@@ -115,7 +127,6 @@ function generateRandomGrid(){
     for(let i = 0; i < totalSquares; i++){       
       let random = Math.floor(Math.random() *9 + 1);             
       var pixel = document.createElement("div");
-      var toggleIndicator = document.getElementById("toggleIndicator");
       
       if(toggleIndicator.innerText === "On"){
         pixel.classList.add("pixel", "border"); // only add border when toggle is set to ON
@@ -146,10 +157,12 @@ function generateRandomGrid(){
     },1);
 
     button.innerHTML = "Clear Grid";
-
+   
     setTimeout(()=>{  
-      step4.style.left = 0; 
-      step4Label.style.right = 0;
+      if(gridHeight <= 75){ // only show save file button for smaller grids 
+        step4.style.left = 0;  
+        step4Label.style.right = 0;
+      }
       toggle.style.left = 0;
       toggleIndicator.style.right = 0;
     },timeoutDelay)
@@ -168,18 +181,6 @@ input.addEventListener("keypress", function(event) {
   }
 }); 
   
-//
-function toggleGridLines(){
-  var toggleIndicator = document.getElementById("toggleIndicator");
-  document.querySelectorAll(".pixel").forEach(pixel => { 
-    if(pixel.classList.contains("border")){
-      pixel.classList.remove("border");
-      toggleIndicator.innerText = "Off";
-    }else{
-      pixel.classList.add("border");
-      toggleIndicator.innerText = "On";
-    }
-  });
-}
+
 
 

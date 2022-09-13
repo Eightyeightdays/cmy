@@ -35,8 +35,7 @@ function getColoursFromImage(event){
     var step2Label = document.getElementById("step-2-label");
     var step3Label = document.getElementById("step-3-label");
     var header = document.getElementById("header");
-    var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-    header.style.left = `-${viewportWidth}px`;
+    header.style.left = "-4000px";
     step2.style.left = 0;
     step3.style.left = 0;
     step2Label.style.right = 0;
