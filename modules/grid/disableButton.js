@@ -1,6 +1,3 @@
-import { button } from "./globals.js";
-import { timeoutDelay } from "./getTimeoutDelay.js";
-
 export default function disableButton(){
     button.disabled = true;   // disable button on click to avoid errors
     setTimeout(()=>{

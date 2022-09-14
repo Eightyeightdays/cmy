@@ -1,11 +1,3 @@
-import { grid, gridHeight } from "./globals.js";
-import { timeoutDelay } from "./getTimeoutDelay.js";
-import { direction } from "./getAnimationDirection.js";
-var toggleIndicator = document.getElementById("toggleIndicator");
-var step4 = document.getElementById("step-4");
-var step4Label = document.getElementById("step-4-label");
-var toggle = document.getElementById("toggle-grid");
-
 function transitionOut(){
     step4.style.left = "-200px"; 
     step4Label.style.right = "-220px";
@@ -18,7 +10,6 @@ function transitionIn(){
     setTimeout(()=>{
         for(var pixel of grid.children){
           pixel.style.opacity = 1;
-          pixel.style[direction] = 0;
         }
       },1);
 
@@ -33,4 +24,4 @@ function transitionIn(){
     },timeoutDelay)
 }
 
-export {toggleIndicator, transitionOut, transitionIn};
+export {transitionOut, transitionIn};

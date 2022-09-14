@@ -1,5 +1,3 @@
-import { toggleIndicator } from "./transitions.js";
-
 export default function toggleGridLines(){
     document.querySelectorAll(".pixel").forEach(pixel => { 
         if(pixel.classList.contains("border")){

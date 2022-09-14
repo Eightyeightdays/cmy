@@ -1,14 +1,3 @@
-import { grid, gridHeight, totalSquares, transitionLength, viewportWidth } from "./globals.js";
-import { direction } from "./getAnimationDirection.js";
-import { delayIncrement } from "./getDelayIncrement.js";
-import { toggleIndicator } from "./transitions.js";
-import { maxGridWidth } from "./getMaxGridWidth.js";
-import { timeoutDelay } from "./getTimeoutDelay.js";
-
-export var delay = 0.1;  // add dynamic transition delay
-
-var pixelHeightAndWidth = maxGridWidth / gridHeight;
-
 export default function createGrid(){
     //  dynamically set grid transition length via CSS variable
     document.documentElement.style.setProperty("--transitionLength", timeoutDelay+"ms");
@@ -35,11 +24,11 @@ export default function createGrid(){
         });
 
         if(gridHeight <= 50){ // only animate smaller grids
-            pixel.style.transition = `all ${transitionLength}s ease-out ${delay}s`;
+            pixel.style.transition = `opacity ${transitionLength}s ease-out ${delay}s`;
         }
 
-        pixel.style[direction] =`-${viewportWidth}px`, // dynamically set transition direction
         delay+= delayIncrement;                       // increase transition delay for each subsequent pixel
         document.getElementById("grid").appendChild(pixel);
     }
+    delay = 0.1
 }

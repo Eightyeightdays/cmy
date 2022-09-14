@@ -1,10 +1,10 @@
-import { viewportHeight, viewportWidth } from "./globals.js";
-var longestDimension;
-var shortestDimension;
-var maxGridWidth;
+let longestDimension;
+let shortestDimension;
+let maxGridWidth;
 
-// determine longest and shortest dimensions
-if(viewportWidth < viewportHeight){     // portrait orientation
+export default function getMaxGridWidth(){
+  // determine longest and shortest dimensions
+  if(viewportWidth < viewportHeight){     // portrait orientation
     shortestDimension = viewportWidth;
     longestDimension = viewportHeight;
   }else{
@@ -18,5 +18,6 @@ if(viewportWidth < viewportHeight){     // portrait orientation
   }else{
     maxGridWidth = shortestDimension - 2;
   }
+  window.maxGridWidth = maxGridWidth;
+}
 
-  export {maxGridWidth};

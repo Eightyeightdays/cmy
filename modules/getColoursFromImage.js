@@ -1,12 +1,5 @@
 function getColoursFromImage(event){
     const colorThief = new ColorThief();
-    const step2 = document.getElementById("step-2");
-    const step3 = document.getElementById("step-3")
-    const step2Label = document.getElementById("step-2-label");
-    const step3Label = document.getElementById("step-3-label");
-    const header = document.getElementById("header");
-    const previewImage = document.getElementById("image");
-    const img = document.querySelector("img");
     let currentFile = event.target.files[0];
 
     if(currentFile.type !== "image/png" && currentFile.type !== "image/jpg" && currentFile.type !== "image/jpeg" && currentFile.type !== "image/gif"){
