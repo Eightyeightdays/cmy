@@ -19,5 +19,6 @@ export default function getMaxGridWidth(){
     maxGridWidth = shortestDimension - 2;
   }
   window.maxGridWidth = maxGridWidth;
+  window.longestDimension = longestDimension; // for use in header transitions
 }
 

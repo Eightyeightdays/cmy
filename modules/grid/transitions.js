@@ -1,8 +1,8 @@
 function transitionOut(){
-    step4.style.left = "-200px"; 
-    step4Label.style.right = "-220px";
-    toggle.style.left = "-200px";
-    toggleIndicator.style.right = "-220px";
+    step4.style.left = "var(--offset)"; 
+    step4Label.style.right = "var(--offset)";
+    toggle.style.left = "var(--offset)";
+    toggleIndicator.style.right = "var(--offset)";
 }
 
 function transitionIn(){

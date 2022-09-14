@@ -25,3 +25,7 @@ window.delay = 0.1;
 
 document.querySelector("#button").addEventListener('click', handleGrid);
 document.querySelector("#toggle-grid").addEventListener("click", toggleGridLines);
+
+let maxOffset = document.getElementById("step-2").offsetWidth;
+document.documentElement.style.setProperty("--offset", `-${maxOffset}px`);
+

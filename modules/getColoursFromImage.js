@@ -22,7 +22,7 @@ function getColoursFromImage(event){
     }
     
     // animate buttons after file is selected
-    header.style.left = "-4000px";
+    header.style.left = `-${longestDimension}px`;
     step2.style.left = 0;
     step3.style.left = 0;
     step2Label.style.right = 0;
