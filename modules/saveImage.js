@@ -3,7 +3,7 @@ function saveImage(){
     domtoimage.toPng(node)
     .then(function (dataUrl) {
         var link = document.createElement('a');
-        link.download = 'grid.jpeg';
+        link.download = 'grid';
         link.href = dataUrl;
         link.click();
     });

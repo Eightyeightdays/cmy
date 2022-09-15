@@ -5,8 +5,12 @@ import removeGrid from "./removeGrid.js";
 import createGrid from "./createGrid.js";
 import getGridVariables from "./getGridVariables.js";
 import getDelayIncrement from "./getDelayIncrement.js";
+import getScreenDimensions from "../getScreenDimensions.js";
+import getMaxGridWidth from "../getMaxGridWidth.js";
 
 export default function handleGrid(){
+  getScreenDimensions();
+  getMaxGridWidth();    // by checking viewport sizes
   getGridVariables();   // gridHeight, totalSquares, pixelHeightAndWidth
   getDelayIncrement();  // delayIncrement
   window.timeoutDelay = (((totalSquares * delayIncrement) + delay) + transitionLength) * 1000;

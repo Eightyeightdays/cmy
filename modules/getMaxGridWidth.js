@@ -1,17 +1,5 @@
-let longestDimension;
-let shortestDimension;
-let maxGridWidth;
-
-export default function getMaxGridWidth(){
-  // determine longest and shortest dimensions
-  if(viewportWidth < viewportHeight){     // portrait orientation
-    shortestDimension = viewportWidth;
-    longestDimension = viewportHeight;
-  }else{
-    shortestDimension = viewportHeight; // landscape orientation
-    longestDimension = viewportWidth;
-  }
-  
+export default function getMaxGridWidth(){  
+  let maxGridWidth;
   // calculate largest possible grid width given the available space
   if(shortestDimension > longestDimension / 2){
     maxGridWidth = (longestDimension / 2) - 2;
@@ -19,6 +7,5 @@ export default function getMaxGridWidth(){
     maxGridWidth = shortestDimension - 2;
   }
   window.maxGridWidth = maxGridWidth;
-  window.longestDimension = longestDimension; // for use in header transitions
 }
 

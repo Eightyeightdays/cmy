@@ -7,6 +7,7 @@ function getColoursFromImage(event){
     }else{
         previewImage.src = URL.createObjectURL(currentFile);   // create a preview of the selected file
         URL.revokeObjectURL(currentFile);
+        container.style.background = "transparent"; // remove coloured background once file loaded
     }
 
     if(img.complete){
@@ -22,7 +23,7 @@ function getColoursFromImage(event){
     }
     
     // animate buttons after file is selected
-    header.style.left = `-${longestDimension}px`;
+    header.style.left = longestDimension + 100 + "px";
     step2.style.left = 0;
     step3.style.left = 0;
     step2Label.style.right = 0;
