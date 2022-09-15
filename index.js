@@ -1,6 +1,7 @@
 import handleGrid from "./modules/grid/handleGrid.js";
 import toggleGridLines from "./modules/toggleGridLines.js";
 import getScreenDimensions from "./modules/getScreenDimensions.js";
+import getColoursFromImage from "./modules/getColoursFromImage.js";
 
 getScreenDimensions();
 
@@ -24,6 +25,7 @@ window.delay = 0.1;
 
 document.querySelector("#button").addEventListener('click', handleGrid);
 document.querySelector("#toggle-grid").addEventListener("click", toggleGridLines);
+document.getElementById("selectFile").addEventListener("change", getColoursFromImage);
 
 let maxOffset = document.getElementById("step-2").offsetWidth;
 document.documentElement.style.setProperty("--offset", `-${maxOffset}px`);

@@ -8,7 +8,7 @@
     <script src="./modules/dom-to-image.min.js"></script>
     <script type="module" src="./index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-    <script src="./modules/getColoursFromImage.js"></script>
+    <script type ="module" src="./modules/getColoursFromImage.js"></script>
     <script src="./modules/saveImage.js"></script>
     <script src="./modules/handleKeyPress.js"></script>
     <meta charset="UTF-8">
@@ -28,7 +28,7 @@
             
             <div id="step-1" class="step">
               <label class="selectFileLabel">
-                <input id="selectFile" type="file" name="file" onchange="getColoursFromImage(event)">
+                <input id="selectFile" type="file" name="file"> <!-- onchange="getColoursFromImage(event)" -->
                 Select a file
               </label>
             </div>

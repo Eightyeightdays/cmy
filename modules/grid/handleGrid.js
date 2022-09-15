@@ -14,7 +14,10 @@ export default function handleGrid(){
   getGridVariables();   // gridHeight, totalSquares, pixelHeightAndWidth
   getDelayIncrement();  // delayIncrement
   window.timeoutDelay = (((totalSquares * delayIncrement) + delay) + transitionLength) * 1000;
-  if(gridHeight > 100 || gridHeight < 1){
+  
+  
+
+  if(gridHeight > maxGridHeight || gridHeight < 1){
     handleInputError();          // only allow grids up to 100x100
     return;
   }else if(gridHeight > 50){

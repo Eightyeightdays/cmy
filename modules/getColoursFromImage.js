@@ -1,4 +1,6 @@
-function getColoursFromImage(event){
+import limitGridSize from "./grid/limitGridSize.js";
+
+export default function getColoursFromImage(event){
     const colorThief = new ColorThief();
     let currentFile = event.target.files[0];
 
@@ -21,7 +23,7 @@ function getColoursFromImage(event){
             });
         });
     }
-    
+    limitGridSize();
     // animate buttons after file is selected
     header.style.left = longestDimension + 100 + "px";
     step2.style.left = 0;
