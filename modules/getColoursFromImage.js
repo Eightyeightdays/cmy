@@ -1,4 +1,4 @@
-import limitGridSize from "./grid/limitGridSize.js";
+import limitGridSize from "./limitGridSize.js";
 
 export default function getColoursFromImage(event){
     const colorThief = new ColorThief();

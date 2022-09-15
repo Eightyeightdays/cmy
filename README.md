@@ -5,7 +5,8 @@ A different grid will be generated every time from the same image.
 Specifications:
 
 - grid animations run up to 50x50
-- save image is available up to 75x75
+- grid size limited to 50x50 for smaller devices
+- save image is available for grids of up to 75x75
 - max grid size up to 100x100
 - upload image in gif, png or jpg/jpeg
 - save image in png  
